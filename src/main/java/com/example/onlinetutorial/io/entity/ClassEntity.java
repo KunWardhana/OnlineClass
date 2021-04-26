@@ -3,6 +3,8 @@ package com.example.onlinetutorial.io.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class ClassEntity implements Serializable {
@@ -16,7 +18,13 @@ public class ClassEntity implements Serializable {
     private String classname;
 
     @Column(nullable = false)
+    private String classid;
+
+    @Column(nullable = false)
     private LocalDateTime classDateTime;
+
+    @OneToMany(orphanRemoval = true, mappedBy = "classEntity", cascade = CascadeType.ALL)
+    private List<UserEntity> userEntities = new ArrayList<>();
 
     public long getId() {
         return id;
@@ -24,6 +32,14 @@ public class ClassEntity implements Serializable {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getClassid() {
+        return classid;
+    }
+
+    public void setClassid(String classid) {
+        this.classid = classid;
     }
 
     public String getClassname() {
@@ -40,5 +56,13 @@ public class ClassEntity implements Serializable {
 
     public void setClassDateTime(LocalDateTime classDateTime) {
         this.classDateTime = classDateTime;
+    }
+
+    public List<UserEntity> getUserEntities() {
+        return userEntities;
+    }
+
+    public void setUserEntities(List<UserEntity> userEntities) {
+        this.userEntities = userEntities;
     }
 }

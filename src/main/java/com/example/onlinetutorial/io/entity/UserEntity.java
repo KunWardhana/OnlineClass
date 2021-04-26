@@ -31,6 +31,10 @@ public class UserEntity implements Serializable {
     @Column(nullable = false)
     private String role;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "classid")
+    private ClassEntity classEntity;
+
     public long getId() {
         return id;
     }
@@ -85,5 +89,13 @@ public class UserEntity implements Serializable {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public ClassEntity getClassEntity() {
+        return classEntity;
+    }
+
+    public void setClassEntity(ClassEntity classEntity) {
+        this.classEntity = classEntity;
     }
 }

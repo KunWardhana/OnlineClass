@@ -1,5 +1,7 @@
 package com.example.onlinetutorial.shared.dto;
 
+import com.example.onlinetutorial.io.entity.ClassEntity;
+
 public class UserDTO {
 
     private String userid;
@@ -8,6 +10,7 @@ public class UserDTO {
     private String email;
     private String phonenumber;
     private String role;
+    private ClassEntity classEntity;
 
     public String getUserid() {
         return userid;
@@ -55,5 +58,13 @@ public class UserDTO {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public ClassEntity getClassEntity() {
+        return classEntity;
+    }
+
+    public void setClassEntity(ClassEntity classEntity) {
+        this.classEntity = classEntity;
     }
 }

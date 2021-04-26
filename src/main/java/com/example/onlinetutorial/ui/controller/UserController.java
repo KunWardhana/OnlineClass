@@ -21,11 +21,11 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping(path = "/testKoneksi", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public String test()
-    {
-        return "No Problem, rest api is running";
-    }
+//    @GetMapping(path = "/testKoneksi", produces = {MediaType.APPLICATION_JSON_VALUE})
+//    public String test()
+//    {
+//        return "No Problem, rest api is running";
+//    }
 
 
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
