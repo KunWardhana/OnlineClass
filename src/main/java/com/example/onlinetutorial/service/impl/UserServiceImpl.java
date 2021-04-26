@@ -47,4 +47,27 @@ public class UserServiceImpl implements IUserService {
 
         return mapper.map(newUser, UserDTO.class);
     }
+
+    @Override
+    public UserDTO findUserByUserId(String userId) {
+
+        UserEntity entity = userRepository.findByUserid(userId);
+        return new ModelMapper().map(entity, UserDTO.class);
+    }
+
+    @Override
+    public UserDTO updateUserByUserId(String userId, UserDTO dtoRequest) {
+
+        UserEntity entity = userRepository.findByUserid(userId);
+
+        entity.setUsername(dtoRequest.getUsername());
+        entity.setPassword(dtoRequest.getPassword());
+        entity.setEmail(dtoRequest.getEmail());
+        entity.setPhonenumber(dtoRequest.getPhonenumber());
+        entity.setRole(dtoRequest.getRole());
+
+        UserEntity storedEntity = userRepository.save(entity);
+
+        return new ModelMapper().map(storedEntity, UserDTO.class);
+    }
 }
