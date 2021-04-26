@@ -54,5 +54,21 @@ public class UserController {
         return mapper.map(responseDTO, UserResponse.class);
     }
 
+    @GetMapping(path = "/userId", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public UserResponse findUserByUserId(@PathVariable String userId)
+    {
+        UserDTO response = userService.findUserByUserId(userId);
+        return new ModelMapper().map(response, UserResponse.class);
+    }
+
+    @PutMapping(path = "/userId", consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public UserResponse updateUserByUserId(@PathVariable String userId, @RequestBody UserRequest request)
+    {
+        ModelMapper mapper = new ModelMapper();
+        UserDTO requestDTO = mapper.map(request, UserDTO.class);
+        UserDTO responseDTO = userService.updateUserByUserId(userId, requestDTO);
+
+        return mapper.map(responseDTO, UserResponse.class);
+    }
 
 }

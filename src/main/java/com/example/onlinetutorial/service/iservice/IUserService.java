@@ -11,4 +11,8 @@ public interface IUserService {
 
     UserDTO addNewUser(UserDTO requestDTO);
 
+    UserDTO findUserByUserId(String userId);
+
+    UserDTO updateUserByUserId (String userId, UserDTO dtoRequest);
+
 }
