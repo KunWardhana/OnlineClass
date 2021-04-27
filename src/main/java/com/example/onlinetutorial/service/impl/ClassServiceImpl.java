@@ -1,9 +1,11 @@
 package com.example.onlinetutorial.service.impl;
 
 import com.example.onlinetutorial.io.entity.ClassEntity;
+import com.example.onlinetutorial.io.entity.UserEntity;
 import com.example.onlinetutorial.io.repository.ClassRepository;
 import com.example.onlinetutorial.service.iservice.IClassService;
 import com.example.onlinetutorial.shared.dto.ClassDTO;
+import com.example.onlinetutorial.shared.dto.UserDTO;
 import com.example.onlinetutorial.shared.utils.GenerateRandomPublicId;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -45,5 +47,23 @@ public class ClassServiceImpl implements IClassService {
         }
 
         return returnval;
+    }
+
+    @Override
+    public ClassDTO findClassByClassID(String classid) {
+        ClassEntity entity = classRepository.findByClassid(classid);
+        return new ModelMapper().map(entity, ClassDTO.class);
+    }
+
+    @Override
+    public ClassDTO updateClassByClassID(String classid, ClassDTO requestDTO) {
+        ClassEntity entity = classRepository.findByClassid(classid);
+
+        entity.setClassname(requestDTO.getClassname());
+        entity.setClassDateTime(requestDTO.getClassDateTime());
+
+        ClassEntity storedEntity = classRepository.save(entity);
+
+        return new ModelMapper().map(storedEntity, ClassDTO.class);
     }
 }

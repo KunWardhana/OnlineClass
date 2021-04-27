@@ -9,4 +9,8 @@ public interface IClassService {
     ClassDTO addNewDClass(ClassDTO classDTO);
 
     List<ClassDTO> getAllClass();
+
+    ClassDTO findClassByClassID(String classid);
+
+    ClassDTO updateClassByClassID(String classid, ClassDTO requestDTO);
 }
