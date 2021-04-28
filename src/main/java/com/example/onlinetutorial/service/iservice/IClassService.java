@@ -13,4 +13,6 @@ public interface IClassService {
     ClassDTO findClassByClassID(String classid);
 
     ClassDTO updateClassByClassID(String classid, ClassDTO requestDTO);
+
+    ClassDTO getUserClass(String userId);
 }

@@ -3,13 +3,12 @@ package com.example.onlinetutorial.service.impl;
 import com.example.onlinetutorial.io.entity.ClassEntity;
 import com.example.onlinetutorial.io.entity.UserEntity;
 import com.example.onlinetutorial.io.repository.ClassRepository;
+import com.example.onlinetutorial.io.repository.UserRepository;
 import com.example.onlinetutorial.service.iservice.IClassService;
 import com.example.onlinetutorial.shared.dto.ClassDTO;
-import com.example.onlinetutorial.shared.dto.UserDTO;
 import com.example.onlinetutorial.shared.utils.GenerateRandomPublicId;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.ModelMap;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +18,12 @@ public class ClassServiceImpl implements IClassService {
 
     private final ClassRepository classRepository;
     private final GenerateRandomPublicId randomPublicId;
+    private final UserRepository userRepository;
 
-    public ClassServiceImpl(ClassRepository classRepository, GenerateRandomPublicId randomPublicId) {
+    public ClassServiceImpl(ClassRepository classRepository, GenerateRandomPublicId randomPublicId, UserRepository userRepository) {
         this.classRepository = classRepository;
         this.randomPublicId = randomPublicId;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -65,5 +66,14 @@ public class ClassServiceImpl implements IClassService {
         ClassEntity storedEntity = classRepository.save(entity);
 
         return new ModelMapper().map(storedEntity, ClassDTO.class);
+    }
+
+    @Override
+    public ClassDTO getUserClass(String userId) {
+
+        UserEntity entity = userRepository.findByUserid(userId);
+        ClassEntity classEntity = entity.getClassEntity();
+
+        return new ModelMapper().map(classEntity, ClassDTO.class);
     }
 }
