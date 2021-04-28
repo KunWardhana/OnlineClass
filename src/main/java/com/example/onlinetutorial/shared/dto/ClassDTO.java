@@ -1,10 +1,10 @@
 package com.example.onlinetutorial.shared.dto;
 
+import com.example.onlinetutorial.io.entity.MaterialEntity;
 import com.example.onlinetutorial.io.entity.UserEntity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ClassDTO implements Serializable {
@@ -12,7 +12,8 @@ public class ClassDTO implements Serializable {
     private String classid;
     private String classname;
     private LocalDateTime classDateTime;
-    private List<UserEntity> userEntities;
+    private List<UserDTO> userEntities;
+    private MaterialDTO materialEntities;
 
     public String getClassid() {
         return classid;
@@ -38,11 +39,19 @@ public class ClassDTO implements Serializable {
         this.classDateTime = classDateTime;
     }
 
-    public List<UserEntity> getUserEntities() {
+    public List<UserDTO> getUserEntities() {
         return userEntities;
     }
 
-    public void setUserEntities(List<UserEntity> userEntities) {
+    public void setUserEntities(List<UserDTO> userEntities) {
         this.userEntities = userEntities;
+    }
+
+    public MaterialDTO getMaterialEntities() {
+        return materialEntities;
+    }
+
+    public void setMaterialEntities(MaterialDTO materialEntities) {
+        this.materialEntities = materialEntities;
     }
 }
