@@ -1,5 +1,7 @@
 package com.example.onlinetutorial.ui.model.response;
 
+import com.example.onlinetutorial.shared.dto.ClassDTO;
+
 public class UserResponse {
 
     private String userid;
@@ -7,6 +9,7 @@ public class UserResponse {
     private String email;
     private String phonenumber;
     private String role;
+    private ClassDTO classDTO;
 
     public String getUserid() {
         return userid;
@@ -46,5 +49,13 @@ public class UserResponse {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public ClassDTO getClassDTO() {
+        return classDTO;
+    }
+
+    public void setClassDTO(ClassDTO classDTO) {
+        this.classDTO = classDTO;
     }
 }

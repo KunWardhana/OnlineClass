@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.print.attribute.standard.Media;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,6 +70,35 @@ public class UserController {
         UserDTO responseDTO = userService.updateUserByUserId(userId, requestDTO);
 
         return mapper.map(responseDTO, UserResponse.class);
+    }
+
+    @PutMapping(path = "/{userId}/{classId}", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public UserResponse changeUserClass (@PathVariable String userId, @PathVariable String classId)
+    {
+        UserDTO dto = userService.changeUserClass(userId, classId);
+        return new ModelMapper().map(dto, UserResponse.class);
+    }
+
+    @GetMapping(path = "/{classId}", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public List<UserResponse> getAllUserinClass (String classId)
+    {
+        ModelMapper mapper = new ModelMapper();
+        List<UserDTO> dtoList = userService.getAllUsersinClass(classId);
+        List<UserResponse> responseList = new ArrayList<>();
+
+        for (UserDTO dto : dtoList)
+        {
+            responseList.add(mapper.map(dtoList, UserResponse.class));
+        }
+
+        return responseList;
+    }
+
+    @DeleteMapping(path = "/DeleteClass/{userId}", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public UserResponse deleteClassUser(@PathVariable String userId)
+    {
+        UserDTO dto = userService.deleteClassUser(userId);
+        return new ModelMapper().map(dto, UserResponse.class);
     }
 
 }

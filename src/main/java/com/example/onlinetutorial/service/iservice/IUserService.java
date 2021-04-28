@@ -15,4 +15,10 @@ public interface IUserService {
 
     UserDTO updateUserByUserId (String userId, UserDTO dtoRequest);
 
+    UserDTO changeUserClass (String userId, String classId);
+
+    List<UserDTO> getAllUsersinClass(String classId);
+
+    UserDTO deleteClassUser (String userId);
+
 }
