@@ -26,6 +26,9 @@ public class ClassEntity implements Serializable {
     @OneToMany(orphanRemoval = true, mappedBy = "classEntity", cascade = CascadeType.ALL)
     private List<UserEntity> userEntities = new ArrayList<>();
 
+    @OneToMany(mappedBy = "materialEntity", fetch = FetchType.LAZY)
+    private List<Header_MaterialEntity> materialEntities = new ArrayList<>();
+
     public long getId() {
         return id;
     }
@@ -64,5 +67,13 @@ public class ClassEntity implements Serializable {
 
     public void setUserEntities(List<UserEntity> userEntities) {
         this.userEntities = userEntities;
+    }
+
+    public List<Header_MaterialEntity> getMaterialEntities() {
+        return materialEntities;
+    }
+
+    public void setMaterialEntities(List<Header_MaterialEntity> materialEntities) {
+        this.materialEntities = materialEntities;
     }
 }
