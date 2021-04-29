@@ -43,8 +43,8 @@ public class ClassServiceImpl implements IClassService {
 
 
         ClassEntity classEntity = classRepository.save(mapper.map(classDTO, ClassEntity.class));
-        ClassEntity entity = mapper.map(classEntity, ClassEntity.class);
-        headerMaterialDTO.setMaterialEntity(mapper.map(entity, MaterialDTO.class));
+//        ClassEntity entity = mapper.map(classEntity, ClassEntity.class);
+//        headerMaterialDTO.setMaterialEntity(mapper.map(entity, MaterialDTO.class));
 
         return mapper.map(classEntity, ClassDTO.class);
     }

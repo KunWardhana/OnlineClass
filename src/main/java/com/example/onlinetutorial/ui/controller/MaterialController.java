@@ -52,4 +52,15 @@ public class MaterialController {
         return new ModelMapper().map(response, MaterialResponse.class);
     }
 
+    @GetMapping(path = "/{classid}/{materialid}", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public MaterialResponse getMaterialOnClass(@PathVariable String classid, @PathVariable String materialid){
+        ModelMapper mapper = new ModelMapper();
+        MaterialDTO response = iMaterialService.findMaterialByClassAndMaterialID(classid, materialid);
+
+        if(response == null)
+        {
+            return null;
+        }
+        return mapper.map(response, MaterialResponse.class);
+    }
 }

@@ -13,6 +13,7 @@ import com.example.onlinetutorial.shared.dto.Header_MaterialDTO;
 import com.example.onlinetutorial.shared.dto.MaterialDTO;
 import com.example.onlinetutorial.shared.dto.UserDTO;
 import com.example.onlinetutorial.shared.utils.GenerateRandomPublicId;
+import org.dom4j.rule.Mode;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -73,5 +74,19 @@ public class MaterialServiceImpl implements IMaterialService {
     public MaterialDTO findMaterialByMaterialId(String materialid) {
         MaterialEntity entity = materialRepository.findByMaterialid(materialid);
         return new ModelMapper().map(entity, MaterialDTO.class);
+    }
+
+    @Override
+    public MaterialDTO findMaterialByClassAndMaterialID(String classid, String materialid) {
+        MaterialEntity materialEntity = materialRepository.findByMaterialid(materialid);
+        ClassEntity classEntity = classRepository.findByClassid(classid);
+        Header_MaterialEntity headerMaterialEntity =
+                headerRepository.findByClasscolAndAndMaterialEntity(classEntity, materialEntity);
+
+        if(headerMaterialEntity == null)
+        {
+            return null;
+        }
+        return new ModelMapper().map(materialEntity, MaterialDTO.class);
     }
 }

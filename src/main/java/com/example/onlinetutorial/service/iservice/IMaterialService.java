@@ -10,4 +10,6 @@ public interface IMaterialService {
     List<MaterialDTO> getAllMaterial();
 
     MaterialDTO findMaterialByMaterialId(String materialid);
+
+    MaterialDTO findMaterialByClassAndMaterialID(String classid, String materialid);
 }
