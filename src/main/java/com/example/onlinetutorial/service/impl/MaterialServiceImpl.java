@@ -83,10 +83,20 @@ public class MaterialServiceImpl implements IMaterialService {
         Header_MaterialEntity headerMaterialEntity =
                 headerRepository.findByClasscolAndAndMaterialEntity(classEntity, materialEntity);
 
-        if(headerMaterialEntity == null)
+        if(headerMaterialEntity == null || materialEntity.isDeleted()==true)
         {
             return null;
         }
         return new ModelMapper().map(materialEntity, MaterialDTO.class);
+    }
+
+    @Override
+    public MaterialDTO deleteMaterial(String materialid) {
+        MaterialEntity entity = materialRepository.findByMaterialid(materialid);
+        entity.setDeleted(true);
+
+        MaterialEntity stored = materialRepository.save(entity);
+
+        return new ModelMapper().map(stored, MaterialDTO.class);
     }
 }

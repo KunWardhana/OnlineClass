@@ -26,7 +26,7 @@ public class ClassEntity implements Serializable {
     @OneToMany(orphanRemoval = true, mappedBy = "classEntity", cascade = CascadeType.ALL)
     private List<UserEntity> userEntities = new ArrayList<>();
 
-    @OneToMany(mappedBy = "materialEntity", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "materialEntity", fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Header_MaterialEntity> materialEntities = new ArrayList<>();
 
     public long getId() {

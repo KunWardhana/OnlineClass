@@ -1,14 +1,18 @@
 package com.example.onlinetutorial.service.impl;
 
 import com.example.onlinetutorial.io.entity.ClassEntity;
+import com.example.onlinetutorial.io.entity.Header_MaterialEntity;
+import com.example.onlinetutorial.io.entity.MaterialEntity;
 import com.example.onlinetutorial.io.entity.UserEntity;
 import com.example.onlinetutorial.io.repository.ClassRepository;
+import com.example.onlinetutorial.io.repository.MaterialRepository;
 import com.example.onlinetutorial.io.repository.UserRepository;
 import com.example.onlinetutorial.service.iservice.IClassService;
 import com.example.onlinetutorial.shared.dto.ClassDTO;
 import com.example.onlinetutorial.io.repository.Header_MaterialRepository;
 import com.example.onlinetutorial.shared.dto.Header_MaterialDTO;
 import com.example.onlinetutorial.shared.dto.MaterialDTO;
+import com.example.onlinetutorial.shared.dto.UserDTO;
 import com.example.onlinetutorial.shared.utils.GenerateRandomPublicId;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +27,9 @@ public class ClassServiceImpl implements IClassService {
 
     @Autowired
     Header_MaterialRepository headerRepository;
+
+    @Autowired
+    MaterialRepository materialRepository;
 
 
     private final ClassRepository classRepository;
@@ -89,4 +96,19 @@ public class ClassServiceImpl implements IClassService {
 
         return new ModelMapper().map(classEntity, ClassDTO.class);
     }
+
+    @Override
+    public ClassDTO addMaterialToClass(String classid, String materialid) {
+        ClassEntity entity = classRepository.findByClassid(classid);
+        MaterialEntity materialEntity = materialRepository.findByMaterialid(materialid);
+        Header_MaterialEntity headerMaterialEntity = new Header_MaterialEntity();
+
+        headerMaterialEntity.setMaterialEntity(materialEntity);
+        headerMaterialEntity.setClasscol(entity);
+
+        headerRepository.save(headerMaterialEntity);
+
+        return new ModelMapper().map(entity, ClassDTO.class);
+    }
+
 }

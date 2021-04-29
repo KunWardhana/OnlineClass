@@ -13,6 +13,7 @@ public class MaterialDTO implements Serializable {
     private String materialname;
     private String materiallink;
     private String materialnote;
+    private boolean isDeleted ;
     private List<ClassDTO> classEntities;
 
     public long getId() {
@@ -61,5 +62,13 @@ public class MaterialDTO implements Serializable {
 
     public void setClassEntities(List<ClassDTO> classEntities) {
         this.classEntities = classEntities;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 }

@@ -69,5 +69,10 @@ public class ClassController {
         return new ModelMapper().map(classDTO, ClassResponse.class);
     }
 
+    @PutMapping(path = "/{classid}/{materialid}", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ClassResponse addMaterialToClass(@PathVariable String classid, @PathVariable String materialid){
+        ClassDTO classDTO = classService.addMaterialToClass(classid, materialid);
+        return new ModelMapper().map(classDTO, ClassResponse.class);
+    }
 
 }

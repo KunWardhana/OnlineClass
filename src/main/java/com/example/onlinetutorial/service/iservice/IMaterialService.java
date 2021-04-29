@@ -12,4 +12,6 @@ public interface IMaterialService {
     MaterialDTO findMaterialByMaterialId(String materialid);
 
     MaterialDTO findMaterialByClassAndMaterialID(String classid, String materialid);
+
+    MaterialDTO deleteMaterial(String materialid);
 }

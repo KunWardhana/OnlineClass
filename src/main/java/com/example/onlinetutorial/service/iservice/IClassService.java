@@ -15,4 +15,7 @@ public interface IClassService {
     ClassDTO updateClassByClassID(String classid, ClassDTO requestDTO);
 
     ClassDTO getUserClass(String userId);
+
+    ClassDTO addMaterialToClass(String classid, String materialid);
+
 }

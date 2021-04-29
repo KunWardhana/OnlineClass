@@ -6,6 +6,7 @@ public class MaterialResponse {
     private String materialname;
     private String materiallink;
     private String materialnote;
+    private boolean isDeleted;
 
     public String getMaterialid() {
         return materialid;
@@ -37,5 +38,13 @@ public class MaterialResponse {
 
     public void setMaterialnote(String materialnote) {
         this.materialnote = materialnote;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 }

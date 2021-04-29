@@ -63,4 +63,12 @@ public class MaterialController {
         }
         return mapper.map(response, MaterialResponse.class);
     }
+
+    @DeleteMapping(path = "/{materialid}", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public MaterialResponse deleteMaterial(@PathVariable String materialid){
+        MaterialDTO materialDTO = iMaterialService.deleteMaterial(materialid);
+
+        return new ModelMapper().map(materialDTO, MaterialResponse.class);
+    }
+
 }

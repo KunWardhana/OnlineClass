@@ -26,9 +26,11 @@ public class MaterialEntity implements Serializable {
     @Column(nullable = false)
     private String materialnote;
 
-    @OneToMany(mappedBy = "classcol", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "classcol", fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Header_MaterialEntity> classEntities = new ArrayList<>();
 
+    @Column(nullable = false)
+    private boolean isDeleted = false;
 
     public long getId() {
         return id;
@@ -76,5 +78,13 @@ public class MaterialEntity implements Serializable {
 
     public void setClassEntities(List<Header_MaterialEntity> classEntities) {
         this.classEntities = classEntities;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 }
