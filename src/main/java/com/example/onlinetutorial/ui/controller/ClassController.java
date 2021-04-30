@@ -62,7 +62,7 @@ public class ClassController {
         return mapper.map(responseDTO, ClassResponse.class);
     }
 
-    @GetMapping(path = "/userId", produces = {MediaType.APPLICATION_JSON_VALUE})
+    @GetMapping(path = "/User/{userId}", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ClassResponse getUserClass(@PathVariable String userId)
     {
         ClassDTO classDTO = classService.getUserClass(userId);
