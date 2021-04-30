@@ -51,8 +51,6 @@ public class MaterialServiceImpl implements IMaterialService {
         headerMaterialEntity.setClasscol(classdata);
 
         Header_MaterialEntity storedValue = headerRepository.save(headerMaterialEntity);
-
-
         return mapper.map(storedata, MaterialDTO.class);
     }
 
@@ -94,9 +92,7 @@ public class MaterialServiceImpl implements IMaterialService {
     public MaterialDTO deleteMaterial(String materialid) {
         MaterialEntity entity = materialRepository.findByMaterialid(materialid);
         entity.setDeleted(true);
-
         MaterialEntity stored = materialRepository.save(entity);
-
         return new ModelMapper().map(stored, MaterialDTO.class);
     }
 }
