@@ -9,7 +9,7 @@ public class ClassResponse {
     private String classid;
     private String classname;
     private LocalDateTime classDateTime;
-    private UserDTO listUser;
+    private List<UserDTO> list;
 
     public String getClassid() {
         return classid;
@@ -35,11 +35,12 @@ public class ClassResponse {
         this.classDateTime = classDateTime;
     }
 
-    public UserDTO getListUser() {
-        return listUser;
+
+    public List<UserDTO> getList() {
+        return list;
     }
 
-    public void setListUser(UserDTO listUser) {
-        this.listUser = listUser;
+    public void setList(List<UserDTO> list) {
+        this.list = list;
     }
 }

@@ -7,8 +7,8 @@ public class Header_MaterialDTO implements Serializable {
     private static final long serialVersionUID= 8627815716685111799L;
 
     private long id;
-    ClassDTO classEntity;
-    MaterialDTO materialEntity;
+    ClassDTO classDTO;
+    MaterialDTO materialDTO;
 
     public long getId() {
         return id;
@@ -19,18 +19,18 @@ public class Header_MaterialDTO implements Serializable {
     }
 
     public ClassDTO getClassEntity() {
-        return classEntity;
+        return classDTO;
     }
 
     public void setClassEntity(ClassDTO classEntity) {
-        this.classEntity = classEntity;
+        this.classDTO = classEntity;
     }
 
     public MaterialDTO getMaterialEntity() {
-        return materialEntity;
+        return materialDTO;
     }
 
     public void setMaterialEntity(MaterialDTO materialEntity) {
-        this.materialEntity = materialEntity;
+        this.materialDTO = materialEntity;
     }
 }

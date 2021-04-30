@@ -10,7 +10,7 @@ public class UserDTO {
     private String email;
     private String phonenumber;
     private String role;
-    private ClassEntity classEntity;
+    private ClassDTO classDTO;
 
     public String getUserid() {
         return userid;
@@ -60,11 +60,11 @@ public class UserDTO {
         this.role = role;
     }
 
-    public ClassEntity getClassEntity() {
-        return classEntity;
+    public ClassDTO getClassEntity() {
+        return classDTO;
     }
 
-    public void setClassEntity(ClassEntity classEntity) {
-        this.classEntity = classEntity;
+    public void setClassEntity(ClassDTO classEntity) {
+        this.classDTO = classEntity;
     }
 }
