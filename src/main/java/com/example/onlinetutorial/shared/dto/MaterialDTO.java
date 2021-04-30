@@ -14,7 +14,7 @@ public class MaterialDTO implements Serializable {
     private String materiallink;
     private String materialnote;
     private boolean isDeleted ;
-    private List<ClassDTO> classEntities;
+    private List<ClassDTO> listClassDTO;
 
     public long getId() {
         return id;
@@ -57,11 +57,11 @@ public class MaterialDTO implements Serializable {
     }
 
     public List<ClassDTO> getClassEntities() {
-        return classEntities;
+        return listClassDTO;
     }
 
     public void setClassEntities(List<ClassDTO> classEntities) {
-        this.classEntities = classEntities;
+        this.listClassDTO = classEntities;
     }
 
     public boolean isDeleted() {

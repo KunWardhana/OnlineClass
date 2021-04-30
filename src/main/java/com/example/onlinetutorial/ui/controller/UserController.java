@@ -80,7 +80,7 @@ public class UserController {
     }
 
     @GetMapping(path = "/{classId}", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public List<UserResponse> getAllUserinClass (String classId)
+    public List<UserResponse> getAllUserinClass (@PathVariable String classId)
     {
         ModelMapper mapper = new ModelMapper();
         List<UserDTO> dtoList = userService.getAllUsersinClass(classId);
@@ -88,7 +88,7 @@ public class UserController {
 
         for (UserDTO dto : dtoList)
         {
-            responseList.add(mapper.map(dtoList, UserResponse.class));
+            responseList.add(mapper.map(dto, UserResponse.class));
         }
 
         return responseList;

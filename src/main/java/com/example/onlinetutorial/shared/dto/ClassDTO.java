@@ -12,8 +12,8 @@ public class ClassDTO implements Serializable {
     private String classid;
     private String classname;
     private LocalDateTime classDateTime;
-    private List<UserDTO> userEntities;
-    private MaterialDTO materialEntities;
+//    private List<UserDTO> listUser;
+    private MaterialDTO materialDTO;
 
     public String getClassid() {
         return classid;
@@ -39,19 +39,19 @@ public class ClassDTO implements Serializable {
         this.classDateTime = classDateTime;
     }
 
-    public List<UserDTO> getUserEntities() {
-        return userEntities;
-    }
-
-    public void setUserEntities(List<UserDTO> userEntities) {
-        this.userEntities = userEntities;
-    }
+//    public List<UserDTO> getUserEntities() {
+//        return listUser;
+//    }
+//
+//    public void setUserEntities(List<UserDTO> userEntities) {
+//        this.listUser = userEntities;
+//    }
 
     public MaterialDTO getMaterialEntities() {
-        return materialEntities;
+        return materialDTO;
     }
 
     public void setMaterialEntities(MaterialDTO materialEntities) {
-        this.materialEntities = materialEntities;
+        this.materialDTO = materialEntities;
     }
 }
